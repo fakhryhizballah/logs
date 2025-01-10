@@ -1,103 +1,103 @@
-# Log Management API
+# API Manajemen Log
 
-This README provides an overview of a RESTful API for managing and querying logs. The API is designed to allow applications to share logs and enable users to search and view logs efficiently.
-
----
-
-## **Table of Contents**
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Getting Started](#getting-started)
-4. [API Endpoints](#api-endpoints)
-5. [Authentication](#authentication)
-6. [Error Handling](#error-handling)
-7. [Environment Variables](#environment-variables)
-8. [Example Requests](#example-requests)
+Dokumen README ini memberikan gambaran umum tentang API RESTful untuk mengelola dan mencari log. API ini dirancang untuk memungkinkan aplikasi berbagi log dan memungkinkan pengguna untuk mencari serta melihat log dengan efisien.
 
 ---
 
-## **1. Introduction**
-The Log Management API allows developers to manage logs across multiple applications by providing endpoints to create, retrieve, and search logs. It is a secure API that supports authentication and authorization to protect sensitive log data.
+## **Daftar Isi**
+1. [Pendahuluan](#pendahuluan)
+2. [Fitur](#fitur)
+3. [Persiapan Awal](#persiapan-awal)
+4. [Endpoint API](#endpoint-api)
+5. [Autentikasi](#autentikasi)
+6. [Penanganan Kesalahan](#penanganan-kesalahan)
+7. [Variabel Lingkungan](#variabel-lingkungan)
+8. [Contoh Permintaan](#contoh-permintaan)
 
 ---
 
-## **2. Features**
-- Create, read, and search logs.
-- Secure authentication using tokens.
-- Pagination support for large log queries.
-- Role-based access control to manage log access.
+## **1. Pendahuluan**
+API Manajemen Log memungkinkan pengembang untuk mengelola log dari berbagai aplikasi dengan menyediakan endpoint untuk membuat, mengambil, dan mencari log. API ini aman karena mendukung autentikasi dan otorisasi untuk melindungi data log yang sensitif.
 
 ---
 
-## **3. Getting Started**
-### **Prerequisites**
-- Node.js and npm installed.
-- MongoDB instance (local or remote).
+## **2. Fitur**
+- Membuat, membaca, dan mencari log.
+- Autentikasi yang aman menggunakan token.
+- Mendukung paginasi untuk pencarian log yang besar.
+- Kontrol akses berbasis peran untuk mengatur akses ke log.
 
-### **Installation**
-Clone the repository and install dependencies:
+---
+
+## **3. Persiapan Awal**
+### **Prasyarat**
+- Node.js dan npm telah terinstal.
+- Instans MongoDB (lokal atau jarak jauh).
+
+### **Instalasi**
+Clone repositori dan instal dependensi:
 ```bash
 git clone https://github.com/yourusername/log-management-api.git
 cd log-management-api
 npm install
 ```
 
-### **Run the API**
+### **Jalankan API**
 ```bash
 npm start
 ```
-The API will be available at **http://localhost:3000**.
+API akan tersedia di **http://localhost:3000**.
 
 ---
 
-## **4. API Endpoints**
+## **4. Endpoint API**
 
-### **Authentication**
-| Method | Endpoint       | Description              |
+### **Autentikasi**
+| Metode | Endpoint       | Deskripsi                |
 |--------|----------------|--------------------------|
-| POST   | /auth/register | Register a new user      |
-| POST   | /auth/login    | Login and get a token    |
+| POST   | /auth/register | Mendaftarkan pengguna baru |
+| POST   | /auth/login    | Login dan mendapatkan token |
 
-### **Logs**
-| Method | Endpoint       | Description              |
+### **Log**
+| Metode | Endpoint       | Deskripsi                |
 |--------|----------------|--------------------------|
-| POST   | /logs          | Create a new log entry   |
-| GET    | /logs          | Retrieve all logs        |
-| GET    | /logs/:id      | Retrieve a specific log  |
-| GET    | /logs/search   | Search logs by query     |
+| POST   | /logs          | Membuat entri log baru   |
+| GET    | /logs          | Mengambil semua log      |
+| GET    | /logs/:id      | Mengambil log spesifik   |
+| GET    | /logs/search   | Mencari log berdasarkan query |
 
 ---
 
-## **5. Authentication**
-The API uses **JSON Web Tokens (JWT)** for authentication. After logging in, users receive a token that must be included in the **Authorization** header for protected routes.
+## **5. Autentikasi**
+API menggunakan **JSON Web Tokens (JWT)** untuk autentikasi. Setelah login, pengguna akan menerima token yang harus disertakan di header **Authorization** untuk mengakses rute yang dilindungi.
 
-Example:
+Contoh:
 ```http
 Authorization: Bearer <your-token>
 ```
 
 ---
 
-## **6. Error Handling**
-The API returns standardized error responses. Below is an example error format:
+## **6. Penanganan Kesalahan**
+API mengembalikan respons kesalahan yang terstandarisasi. Berikut adalah contoh format kesalahan:
 ```json
 {
   "error": true,
-  "message": "Invalid token"
+  "message": "Token tidak valid"
 }
 ```
 
-| Status Code | Description        |
-|-------------|--------------------|
-| 400         | Bad Request        |
-| 401         | Unauthorized       |
-| 404         | Not Found          |
-| 500         | Internal Server Error |
+| Kode Status | Deskripsi            |
+|-------------|----------------------|
+| 400         | Permintaan Tidak Valid |
+| 401         | Tidak Terotorisasi    |
+| 404         | Tidak Ditemukan       |
+| 500         | Kesalahan Server Internal |
 
 ---
 
-## **7. Environment Variables**
-Create a **.env** file to configure your environment variables:
+## **7. Variabel Lingkungan**
+Buat file **.env** untuk mengatur variabel lingkungan:
 ```env
 PORT=3000
 MONGO_URI=mongodb://localhost:27017/logs
@@ -106,9 +106,9 @@ JWT_SECRET=your_jwt_secret
 
 ---
 
-## **8. Example Requests**
+## **8. Contoh Permintaan**
 
-### **Register a User**
+### **Mendaftarkan Pengguna**
 ```http
 POST /auth/register
 Content-Type: application/json
@@ -119,7 +119,7 @@ Content-Type: application/json
 }
 ```
 
-### **Create a Log Entry**
+### **Membuat Entri Log Baru**
 ```http
 POST /logs
 Authorization: Bearer <your-token>
@@ -128,11 +128,11 @@ Content-Type: application/json
 {
   "application": "MyApp",
   "level": "info",
-  "message": "This is a log message."
+  "message": "Ini adalah pesan log."
 }
 ```
 
-### **Search Logs**
+### **Mencari Log**
 ```http
 GET /logs/search?query=error
 Authorization: Bearer <your-token>
